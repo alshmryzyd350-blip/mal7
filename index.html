@@ -13,8 +13,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
     <style>
         body {
             font-family: 'Cairo', sans-serif;
@@ -66,14 +64,6 @@
             background-image: linear-gradient(#ffffff08 1px, transparent 1px), linear-gradient(90deg, #ffffff08 1px, transparent 1px);
             background-size: 40px 40px;
         }
-
-        .prose {
-            color: #cbd5e1;
-            line-height: 1.7;
-        }
-        .prose strong { color: #f8fafc; font-weight: 700; }
-        .prose ul { list-style-type: disc; padding-right: 1.5em; margin: 0.5em 0; }
-        .prose p { margin-bottom: 0.5em; }
     </style>
 </head>
 <body class="min-h-screen">
@@ -217,67 +207,6 @@
             </div>
         </div>
 
-        <!-- AI Assistant Section -->
-        <div class="max-w-4xl mx-auto mb-24 animate-fade-in delay-500">
-            <div class="text-center mb-8">
-                <div class="inline-flex items-center justify-center p-3 bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl mb-4 shadow-lg shadow-purple-500/20">
-                    <i data-lucide="sparkles" class="w-8 h-8 text-white animate-pulse"></i>
-                </div>
-                <h2 class="text-3xl font-bold mb-2">مساعد Mal7 الذكي</h2>
-                <p class="text-slate-400">مدعوم بواسطة Gemini AI ✨</p>
-            </div>
-
-            <div class="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none"></div>
-
-                <div class="relative z-10 flex flex-col gap-4">
-                    <div id="ai-response-area" class="min-h-[120px] bg-slate-950/50 rounded-2xl p-6 border border-white/5 mb-4 hidden">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shrink-0">
-                                <i data-lucide="bot" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="font-bold text-purple-300 text-sm mb-2">الرد الذكي:</h4>
-                                <div id="ai-text-content" class="prose text-slate-200 text-sm md:text-base"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap gap-2 justify-center mb-2">
-                        <button onclick="askGemini('اقترح لي لعبة مغامرات تشبه زيلدا وفاينل فانتسي ولكن تكون غير مشهورة (Hidden Gem)')" 
-                                class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-full text-sm text-slate-300 transition-all hover:scale-105 flex items-center gap-2">
-                            <i data-lucide="gamepad-2" class="w-4 h-4 text-yellow-400"></i> اقترح لي لعبة
-                        </button>
-                        <button onclick="askGemini('اشرح لي ما هو تتبع الأشعة (Ray Tracing) وكيف يؤثر كرت RTX 4050 عليه بأسلوب مبسط')" 
-                                class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-full text-sm text-slate-300 transition-all hover:scale-105 flex items-center gap-2">
-                            <i data-lucide="cpu" class="w-4 h-4 text-blue-400"></i> اشرح لي Ray Tracing
-                        </button>
-                        <button onclick="askGemini('أعطني نصيحة لمهندس مبتدئ يريد التخصص في الهيئة الملكية للجبيل وينبع')" 
-                                class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-full text-sm text-slate-300 transition-all hover:scale-105 flex items-center gap-2">
-                            <i data-lucide="graduation-cap" class="w-4 h-4 text-green-400"></i> نصيحة هندسية
-                        </button>
-                    </div>
-
-                    <div class="relative group">
-                        <input type="text" id="user-prompt" 
-                               placeholder="اسألني عن الألعاب، التكنولوجيا، أو الهندسة..." 
-                               class="w-full bg-slate-950 border border-slate-700 rounded-2xl py-4 pr-6 pl-32 text-white focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all shadow-inner">
-                        <button id="send-btn" onclick="handleCustomAsk()" 
-                                class="absolute left-2 top-2 bottom-2 bg-purple-600 hover:bg-purple-700 text-white px-6 rounded-xl font-bold transition-all shadow-lg shadow-purple-600/20 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
-                            <span>إرسال</span>
-                            <i data-lucide="sparkles" class="w-4 h-4"></i>
-                        </button>
-                    </div>
-                    <div id="loading-indicator" class="hidden text-center text-slate-400 text-sm mt-2 flex items-center justify-center gap-2">
-                        <div class="w-2 h-2 bg-purple-500 rounded-full animate-bounce"></div>
-                        <div class="w-2 h-2 bg-purple-500 rounded-full animate-bounce delay-100"></div>
-                        <div class="w-2 h-2 bg-purple-500 rounded-full animate-bounce delay-200"></div>
-                        جاري التفكير...
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- قسم التعليم -->
         <div class="bg-slate-900/50 backdrop-blur-md rounded-3xl p-8 border border-slate-800 text-center max-w-3xl mx-auto relative overflow-hidden animate-fade-in delay-500">
             <div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
@@ -302,83 +231,20 @@
     </main>
 
     <script>
+        // تفعيل الأيقونات
         lucide.createIcons();
+
+        // تحديث السنة في الفوتر
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // تأثير حركة الماوس التفاعلية
         const cursorBg = document.getElementById('cursor-bg');
+
         document.addEventListener('mousemove', (e) => {
-            cursorBg.style.setProperty('--x', e.clientX + 'px');
-            cursorBg.style.setProperty('--y', e.clientY + 'px');
-        });
-
-        // ✅ استخدام Netlify Function (آمن ومحمي)
-        async function askGemini(promptText) {
-            const inputField = document.getElementById('user-prompt');
-            const responseArea = document.getElementById('ai-response-area');
-            const textContent = document.getElementById('ai-text-content');
-            const loading = document.getElementById('loading-indicator');
-            const sendBtn = document.getElementById('send-btn');
-
-            if (promptText) inputField.value = promptText;
-            loading.classList.remove('hidden');
-            sendBtn.disabled = true;
-            sendBtn.classList.add('opacity-50');
-            responseArea.classList.add('hidden');
-
-            const systemPrompt = `
-أنت مساعد ذكي في موقع شخصي (Portfolio) لشخص اسمه Mal7.
-شخصية Mal7: طالب هندسة في الهيئة الملكية للجبيل وينبع، وجيمر (لاعب) مخضرم يحب ألعاب العالم المفتوح مثل Zelda و Final Fantasy.
-لديه تجميعة PC قوية بمعالج i7 الجيل 13 وكرت RTX 4050.
-
-دورك:
-1. الإجابة على أسئلة الزوار بأسلوب ودي، ذكي، ومختصر.
-2. التحدث باللغة العربية.
-3. إذا سألك أحد عن "اقتراح لعبة"، اقترح ألعاب تشبه ذوقه (RPG, Adventure).
-4. إذا سألك أحد عن مواصفات الجهاز، امدح اختياراته (مثل الـ RTX 4050 وأهميته للـ DLSS).
-5. استخدم ايموجي ✨ و 🎮 في ردودك لتكون ممتعة.
-            `;
-
-            try {
-                // 🔒 الاتصال بـ Netlify Function بدلاً من API مباشرة
-                const response = await fetch('/.netlify/functions/ask-gemini', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        prompt: systemPrompt + "\n\nسؤال الزائر: " + promptText
-                    })
-                });
-
-                const data = await response.json();
-
-                if (data.error) {
-                    throw new Error(data.error.message || data.error);
-                }
-
-                const aiResponse = data.candidates[0].content.parts[0].text;
-                textContent.innerHTML = marked.parse(aiResponse);
-                responseArea.classList.remove('hidden');
-                responseArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-            } catch (error) {
-                console.error("Error:", error);
-                textContent.innerHTML = `<span class="text-red-400">عذراً، حدث خطأ: ${error.message}</span>`;
-                responseArea.classList.remove('hidden');
-            } finally {
-                loading.classList.add('hidden');
-                sendBtn.disabled = false;
-                sendBtn.classList.remove('opacity-50');
-                inputField.value = '';
-            }
-        }
-
-        function handleCustomAsk() {
-            const input = document.getElementById('user-prompt');
-            const text = input.value.trim();
-            if (text) askGemini(text);
-        }
-
-        document.getElementById('user-prompt').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') handleCustomAsk();
+            const x = e.clientX;
+            const y = e.clientY;
+            cursorBg.style.setProperty('--x', x + 'px');
+            cursorBg.style.setProperty('--y', y + 'px');
         });
     </script>
 </body>
